@@ -45,14 +45,14 @@ RUN apt-get remove -y wget
 #COPY pulse-config.conf /etc/pulse/client.conf
 
 # add a parsec user
-RUN groupadd --gid 1000 parsec \
-&&  useradd --gid 1000 --uid 1000 -m parsec \
-&&  usermod -aG video parsec \
-&&  mkdir -p /home/parsec/.parsec \
-&&  chown parsec:parsec /home/parsec/.parsec
+#RUN groupadd --gid 1000 parsec \
+#&&  useradd --gid 1000 --uid 1000 -m parsec \
+#&&  usermod -aG video parsec \
+#&&  mkdir -p /home/parsec/.parsec \
+#&&  chown parsec:parsec /home/parsec/.parsec
 
-RUN apt autoremove
+RUN apt -y autoremove
 # parsec config
-USER parsec
+#USER parsec
 COPY config.txt /home/parsec/.parsec/config.txt
-#ENTRYPOINT [ "/usr/bin/parsecd" ]
+#ENTRYPOINT [ "/usr/bin/parsec" ]
